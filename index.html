@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temprature Converter </title>
+    <style>
+        body {
+            padding: 50px 100px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #container {
+            text-align: center;
+            background-color: rgb(229, 255, 0);
+            padding: 50px;
+        }
+
+        .input_div {
+            display: inline-block;
+        }
+
+        .input_data {
+            padding: 5px 10px;
+            margin: 15px;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        label {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 25px;
+            color: rgb(47, 190, 242);
+        }
+    </style>
+</head>
+<body>
+    <h1>Temprature Converter</h1>
+    <div id="container">
+        <div class="input_div">
+            <label>Celcious(<sup>0</sup><sub>C</sub>)</label><br>
+            <input type="number" id="cel" value=0 class="input_data">
+        </div>
+        <div class="input_div">
+            <label>Fahrenhiet(<sup>0</sup><sub>F</sub>)</label><br>
+            <input type="number" id="fah" value=32 class="input_data">
+        </div>
+    </div>
+    <script>
+        var degreeCel = document.getElementById('cel');
+        var degreeFah = document.getElementById('fah');
+
+        degreeCel.addEventListener('input', function () {
+            let cel = this.value;
+            let fah = (cel * 9 / 5) + 32;
+            if (!Number.isInteger(fah)) {
+                fah = fah.toFixed(4);
+            }
+            degreeFah.value = fah;
+        });
+        degreeFah.addEventListener('input', function () {
+            let fah = this.value;
+            let cel = (fah - 32) * 5 / 9;
+            if (!Number.isInteger(cel)) {
+                cel = cel.toFixed(4);
+            }
+            degreeCel.value = cel;
+        });
+    </script>
+</body>
+</html>
